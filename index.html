@@ -1284,6 +1284,19 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    .accepted-item {
+      border-right: 3px solid transparent !important;
+    }
+    .accepted-item:hover {
+      background: rgba(255, 255, 255, .96) !important;
+      border-color: var(--border-gold) !important;
+      border-right-color: var(--gold) !important;
+      transform: translateX(-4px);
+      box-shadow: 0 6px 24px rgba(201,151,42,.14), inset 0 0 0 1px rgba(201,151,42,.06);
+    }
+    .accepted-item:nth-child(even) {
+      background: linear-gradient(135deg,rgba(253,249,242,.6),rgba(250,252,248,.7)) !important;
+    }
   </style>
 </head>
 
@@ -1405,366 +1418,361 @@
       <div class="ctitle">تظاهرة "فنون العتيق" – طبعة جويلية 2026</div>
       <div class="cdesc" style="font-weight: bold; margin-bottom: 8px; color: var(--rust);">تنظيم: جمعية إبزيم للثقافة
         والمواطنة بالشراكة مع المتحف العمومي الوطني بسطيف.</div>
-      <div class="cdesc">في إطار التحضير لأيام فنون العتيق الطبعة الأولى، يرجى من المشاركين ملء هذه الاستمارة بدقة لعرض
-        تحفك ومقتنياتك الأثرية في الفضاء المخصص للمعرض. المقاعد محدودة ويخضع اختيار العارضين لتقييم اللجنة الفنية.</div>
-      <div class="cdesc"
-        style="color: #8c3a1c; font-weight: bold; display: flex; align-items: center; gap: 6px; margin-top: 5px; margin-bottom: 12px;">
-        <i data-lucide="alert-circle" style="width:16px;height:16px;flex-shrink:0;"></i>
-        يرجى التسجيل مرة واحدة فقط وعدم تكرار التسجيل.
+      
+      <div style="text-align: center; padding: 30px 20px 10px; animation: fadeInUp .6s var(--ease) both;">
+        <i data-lucide="heart" style="width:48px;height:48px;color:#8c3a1c;margin-bottom:10px;fill:#8c3a1c;"></i>
+        <h2 style="font-family:'Amiri',serif;font-size:28px;color:var(--rust);margin-bottom:12px;">شكراً جزيلاً لجميع المسجلين</h2>
+        <p style="color:var(--muted);font-size:14px;max-width:550px;margin:0 auto;line-height:2.1;">
+          نتوجه بأسمى آيات الشكر والامتنان إلى كل من سجّل واهتم بتظاهرة <strong>"أيام فنون العتيق"</strong>. لقد أثلجتم صدورنا بحماسكم وحرصكم على المشاركة في هذا الحدث الثقافي المميز. نشكركم على ثقتكم الغالية.
+        </p>
+        <p style="color:var(--muted);font-size:14px;max-width:550px;margin:6px auto 0;line-height:2.1;">
+          هذه هي القائمة النهائية للمشاركين المقبولين بعد دراسة اللجنة الفنية. سوف تقوم <strong>جمعية إبزيم للثقافة والمواطنة</strong> بالاتصال بهم عبر الأرقام الهاتفية المدخلة في استمارات التسجيل.
+        </p>
       </div>
-      <form id="regForm" name="contact" method="POST" netlify data-netlify="true" enctype="multipart/form-data">
-        <input type="hidden" name="form-name" value="contact">
-        <!-- Stepper Progress Bar -->
-        <div class="stepper-container">
-          <div class="stepper-bar">
-            <div class="stepper-progress" id="stepper-progress"></div>
+
+      <div class="divider"></div>
+
+      <div style="padding: 0 5px 20px;">
+        <div style="text-align:center;margin-bottom:18px;">
+          <div style="display:inline-flex;align-items:center;gap:12px;">
+            <span style="width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));display:block;"></span>
+            <i data-lucide="scroll-text" style="width:22px;height:22px;color:var(--gold);"></i>
+            <span style="width:50px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);display:block;"></span>
           </div>
-          <div class="stepper-step active" id="step-bubble-1" onclick="goToStep(1)">
-            <div class="step-num">1</div>
-            <div class="step-label">البيانات الشخصية</div>
-          </div>
-          <div class="stepper-step" id="step-bubble-2" onclick="goToStep(2)">
-            <div class="step-num">2</div>
-            <div class="step-label">تفاصيل التحف</div>
-          </div>
-          <div class="stepper-step" id="step-bubble-3" onclick="goToStep(3)">
-            <div class="step-num">3</div>
-            <div class="step-label">المتطلبات اللوجستية</div>
-          </div>
-          <div class="stepper-step" id="step-bubble-4" onclick="goToStep(4)">
-            <div class="step-num">4</div>
-            <div class="step-label">الشروط والتأكيد</div>
-          </div>
+          <div style="font-family:'Amiri',serif;font-size:26px;color:var(--rust);margin-top:6px;font-weight:700;">قائمة المشاركين المقبولين</div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:4px;">بناءً على دراسة اللجنة الفنية للتظاهرة</div>
         </div>
 
-        <!-- Step 1: Personal Info -->
-        <div class="step-content active" id="step-1">
-          <!-- 1. المعلومات الشخصية للمشارك -->
-          <div class="slabel"><i data-lucide="user" style="width:18px;height:18px"></i>1. المعلومات الشخصية للمشارك:</div>
-          <div class="two">
-            <div class="field"><label><i data-lucide="user-round" style="width:14px;height:14px"></i>الاسم الكامل <span
-                  class="req">*</span></label><input type="text" name="fullname" placeholder="الاسم واللقب" required />
+        <div id="acceptedList" style="display:grid;grid-template-columns:1fr;gap:10px;">
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">01</span>
             </div>
-            <div class="field"><label><i data-lucide="store" style="width:14px;height:14px"></i>اسم العارض / الصفة
-                التجارية (إن وجدت)</label><input type="text" name="exhibitor_name"
-                placeholder="مثال: معرض الأنتيك العتيق" /></div>
-          </div>
-
-          <div class="two">
-            <div class="field"><label><i data-lucide="map-pin" style="width:14px;height:14px"></i>ولاية الإقامة <span
-                  class="req">*</span></label>
-              <select name="wilaya" required>
-                <option value="">— اختر الولاية —</option>
-                <option value="01 - أدرار">01 - أدرار</option>
-                <option value="02 - الشلف">02 - الشلف</option>
-                <option value="03 - الأغواط">03 - الأغواط</option>
-                <option value="04 - أم البواقي">04 - أم البواقي</option>
-                <option value="05 - باتنة">05 - باتنة</option>
-                <option value="06 - بجاية">06 - بجاية</option>
-                <option value="07 - بسكرة">07 - بسكرة</option>
-                <option value="08 - بشار">08 - بشار</option>
-                <option value="09 - البليدة">09 - البليدة</option>
-                <option value="10 - البويرة">10 - البويرة</option>
-                <option value="11 - تمنراست">11 - تمنراست</option>
-                <option value="12 - تبسة">12 - تبسة</option>
-                <option value="13 - تلمسان">13 - تلمسان</option>
-                <option value="14 - تيارت">14 - تيارت</option>
-                <option value="15 - تيزي وزو">15 - تيزي وزو</option>
-                <option value="16 - الجزائر">16 - الجزائر</option>
-                <option value="17 - الجلفة">17 - الجلفة</option>
-                <option value="18 - جيجل">18 - جيجل</option>
-                <option value="19 - سطيف">19 - سطيف</option>
-                <option value="20 - سعيدة">20 - سعيدة</option>
-                <option value="21 - سكيكدة">21 - سكيكدة</option>
-                <option value="22 - سيدي بلعباس">22 - سيدي بلعباس</option>
-                <option value="23 - عنابة">23 - عنابة</option>
-                <option value="24 - قالمة">24 - قالمة</option>
-                <option value="25 - قسنطينة">25 - قسنطينة</option>
-                <option value="26 - المدية">26 - المدية</option>
-                <option value="27 - مستغانم">27 - مستغانم</option>
-                <option value="28 - المسيلة">28 - المسيلة</option>
-                <option value="29 - معسكر">29 - معسكر</option>
-                <option value="30 - ورقلة">30 - ورقلة</option>
-                <option value="31 - وهران">31 - وهران</option>
-                <option value="32 - البيض">32 - البيض</option>
-                <option value="33 - إليزي">33 - إليزي</option>
-                <option value="34 - برج بوعريريج">34 - برج بوعريريج</option>
-                <option value="35 - بومرداس">35 - بومرداس</option>
-                <option value="36 - الطارف">36 - الطارف</option>
-                <option value="37 - تندوف">37 - تندوف</option>
-                <option value="38 - تيسمسيلت">38 - تيسمسيلت</option>
-                <option value="39 - الوادي">39 - الوادي</option>
-                <option value="40 - خنشلة">40 - خنشلة</option>
-                <option value="41 - سوق أهراس">41 - سوق أهراس</option>
-                <option value="42 - تيبازة">42 - تيبازة</option>
-                <option value="43 - ميلة">43 - ميلة</option>
-                <option value="44 - عين الدفلى">44 - عين الدفلى</option>
-                <option value="45 - النعامة">45 - النعامة</option>
-                <option value="46 - عين تموشنت">46 - عين تموشنت</option>
-                <option value="47 - غرداية">47 - غرداية</option>
-                <option value="48 - غليزان">48 - غليزان</option>
-                <option value="49 - تيميمون">49 - تيميمون</option>
-                <option value="50 - برج باجي مختار">50 - برج باجي مختار</option>
-                <option value="51 - أولاد جلال">51 - أولاد جلال</option>
-                <option value="52 - بني عباس">52 - بني عباس</option>
-                <option value="53 - عين صالح">53 - عين صالح</option>
-                <option value="54 - عين قزام">54 - عين قزام</option>
-                <option value="55 - تقرت">55 - تقرت</option>
-                <option value="56 - جانت">56 - جانت</option>
-                <option value="57 - المغير">57 - المغير</option>
-                <option value="58 - المنيعة">58 - المنيعة</option>
-                <option value="59 - أفلو">59 - أفلو</option>
-                <option value="60 - بريكة">60 - بريكة</option>
-                <option value="61 - القنطرة">61 - القنطرة</option>
-                <option value="62 - بئر العاتر">62 - بئر العاتر</option>
-                <option value="63 - العريشة">63 - العريشة</option>
-                <option value="64 - قصر الشلالة">64 - قصر الشلالة</option>
-                <option value="65 - عين وسارة">65 - عين وسارة</option>
-                <option value="66 - مسعد">66 - مسعد</option>
-                <option value="67 - قصر البخاري">67 - قصر البخاري</option>
-                <option value="68 - بوسعادة">68 - بوسعادة</option>
-                <option value="69 - الأبيض سيدي الشيخ">69 - الأبيض سيدي الشيخ</option>
-              </select>
-            </div>
-            <div class="field"><label><i data-lucide="building" style="width:14px;height:14px"></i>البلدية <span
-                  class="req">*</span></label><input type="text" name="commune" placeholder="اسم البلدية" required />
-            </div>
-          </div>
-
-          <div class="two">
-            <div class="field"><label><i data-lucide="phone" style="width:14px;height:14px"></i>رقم الهاتف <span
-                  class="req">*</span></label><input type="tel" name="phone" placeholder="05XXXXXXXX" required /></div>
-            <div class="field"><label><i data-lucide="mail" style="width:14px;height:14px"></i>البريد
-                الإلكتروني</label><input type="email" name="email" placeholder="name@example.com" /></div>
-          </div>
-
-          <div class="field"><label><i data-lucide="share-2" style="width:14px;height:14px"></i>رابط صفحة التواصل
-              الاجتماعي (فيسبوك/إنستغرام لعرض أعمالك)</label><input type="text" name="social_link"
-              placeholder="https://facebook.com/yourpage" /></div>
-
-          <div class="actions">
-            <button class="btn bp btn-next" type="button" onclick="nextStep(1)">التالي <i data-lucide="arrow-left" style="width:17px;height:17px"></i></button>
-          </div>
-        </div>
-
-        <!-- Step 2: Antiques Info -->
-        <div class="step-content" id="step-2" style="display:none;">
-          <!-- 2. طبيعة المقتنيات والتحف المعروضة -->
-          <div class="slabel"><i data-lucide="tag" style="width:18px;height:18px"></i>2. طبيعة المقتنيات والتحف المعروضة:</div>
-          <div class="field">
-            <label style="font-weight: bold; margin-bottom: 10px; display: block;"><i data-lucide="check-square"
-                style="width:14px;height:14px"></i>ما هو التصنيف الرئيسي للتحف التي تعرضها؟ (يمكن اختيار أكثر من خانة)
-              <span class="req">*</span></label>
-            <div
-              style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 10px; background-color: #faf8f5; padding: 15px; border-radius: 8px; border: 1px solid #f0eae1;">
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;"><input
-                  type="checkbox" name="category_furniture"
-                  style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--green);" /> أثاث وديكورات عتيقة
-                (طاولات، كراسي، مرايا قديمة)</label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;"><input
-                  type="checkbox" name="category_kitchenware"
-                  style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--green);" /> أواني ونحاسيات، فخار
-                أثري، أدوات منزلية قديمة</label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;"><input
-                  type="checkbox" name="category_jewelry"
-                  style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--green);" /> ساعات، مجوهرات، وحلي
-                عتيقة</label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;"><input
-                  type="checkbox" name="category_documents"
-                  style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--green);" /> وثائق، كتب، مخطوطات،
-                وطوابع بريدية تاريخية</label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;"><input
-                  type="checkbox" name="category_art"
-                  style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--green);" /> لوحات فنية، منحوتات،
-                وصور فوتوغرافية نادرة</label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;"><input
-                  type="checkbox" name="category_devices"
-                  style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--green);" /> أجهزة كلاسيكية (راديو
-                قديم، آلات كاتبة، كاميرات عتيقة)</label>
-              <div style="display: flex; flex-direction: column; gap: 6px;">
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;"><input
-                    type="checkbox" name="category_other"
-                    style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--green);" /> أخرى (يرجى
-                  التحديد)</label>
-                <input type="text" name="category_other_text" placeholder="حدد نوع المعروضات الأخرى..."
-                  style="margin-right: 28px; width: calc(100% - 28px);" />
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بن علي محمد عبد الجليل</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>حاسي مسعود — السيالات القديمة</span>
               </div>
             </div>
           </div>
-          <div class="field">
-            <label><i data-lucide="package" style="width:14px;height:14px"></i>وصف مختصر ومميز للمجموعات الأثرية التي تنوي
-              عرضها (أبرز القطع النادرة) <span class="req">*</span></label>
-            <textarea name="description" placeholder="يرجى إعطاء وصف تفصيلي لأهم القطع والتحف التي ستعرضها..."
-              required></textarea>
-          </div>
-
-          <div class="actions">
-            <button class="btn br btn-prev" type="button" onclick="prevStep(2)"><i data-lucide="arrow-right" style="width:17px;height:17px"></i> السابق</button>
-            <button class="btn bp btn-next" type="button" onclick="nextStep(2)">التالي <i data-lucide="arrow-left" style="width:17px;height:17px"></i></button>
-          </div>
-        </div>
-
-        <!-- Step 3: Logistics -->
-        <div class="step-content" id="step-3" style="display:none;">
-          <!-- 3. المتطلبات اللوجستية (خاص باللجنة التنظيمية) -->
-          <div class="slabel"><i data-lucide="truck" style="width:18px;height:18px"></i>3. المتطلبات اللوجستية (خاص باللجنة التنظيمية):</div>
-          <div class="field">
-            <label style="font-weight: bold; margin-bottom: 10px; display: block;"><i data-lucide="layout-grid"
-                style="width:14px;height:14px"></i>المساحة التقريبية التي تحتاجها للعرض ميدانياً <span
-                class="req">*</span></label>
-            <div
-              style="display: flex; flex-direction: column; gap: 12px; background-color: #faf8f5; padding: 15px; border-radius: 8px; border: 1px solid #f0eae1;">
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="radio" name="space_requirement" value="طاولة عرض قياسية (1.5م × 0.8م)" required
-                  style="width: 18px; height: 18px; accent-color: var(--green);" />
-                طاولة عرض قياسية (1.5م × 0.8م)
-              </label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="radio" name="space_requirement" value="طاولتان"
-                  style="width: 18px; height: 18px; accent-color: var(--green);" />
-                طاولتان
-              </label>
-              <div style="display: flex; flex-direction: column; gap: 6px;">
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                  <input type="radio" name="space_requirement" value="مساحة أرضية مخصصة للقطع الكبيرة والأثاث"
-                    style="width: 18px; height: 18px; accent-color: var(--green);" />
-                  مساحة أرضية مخصصة للقطع الكبيرة والأثاث (يرجى تحديد الأبعاد بالأسفل)
-                </label>
-                <input type="text" name="floor_space_dims" placeholder="مثال: 3م × 2م..."
-                  style="margin-right: 28px; width: calc(100% - 28px);" />
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">02</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">الأخضر خميسي</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="package" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>تحف البيض التقليدية</span>
               </div>
             </div>
           </div>
-
-          <div class="field">
-            <label style="font-weight: bold; margin-bottom: 10px; display: block;"><i data-lucide="zap"
-                style="width:14px;height:14px"></i>هل تحتاج إلى ربط كهربائي خاص بالقطع المعروضة (إنارة خاصة، تشغيل أجهزة
-              قديمة)؟ <span class="req">*</span></label>
-            <div
-              style="display: flex; gap: 20px; background-color: #faf8f5; padding: 15px; border-radius: 8px; border: 1px solid #f0eae1;">
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="radio" name="electricity" value="نعم" required
-                  style="width: 18px; height: 18px; accent-color: var(--green);" />
-                نعم
-              </label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="radio" name="electricity" value="لا"
-                  style="width: 18px; height: 18px; accent-color: var(--green);" />
-                لا
-              </label>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">03</span>
             </div>
-          </div>
-
-          <div class="field">
-            <label style="font-weight: bold; margin-bottom: 10px; display: block;"><i data-lucide="hotel"
-                style="width:14px;height:14px"></i>بالنسبة للعارضين من خارج ولاية سطيف، هل تحتاج إلى ضمان مبيت (إقامة)
-              طيلة أيام التظاهرة الأربعة؟ <span class="req">*</span></label>
-            <div
-              style="display: flex; flex-direction: column; gap: 12px; background-color: #faf8f5; padding: 15px; border-radius: 8px; border: 1px solid #f0eae1;">
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="radio" name="accomm" value="نعم، أحتاج إلى مبيت" required
-                  style="width: 18px; height: 18px; accent-color: var(--green);" />
-                نعم، أحتاج إلى مبيت
-              </label>
-              <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                <input type="radio" name="accomm" value="لا، لا أحتاج"
-                  style="width: 18px; height: 18px; accent-color: var(--green);" />
-                لا، لا أحتاج
-              </label>
-              <p
-                style="font-size: 13px; color: #8c3a1c; margin-top: 4px; font-weight: bold; display: flex; align-items: center; gap: 6px;">
-                <i data-lucide="alert-triangle" style="width:16px;height:16px;"></i>
-                تنبيه هام: الإطعام على عاتق المشارك بالكامل طيلة أيام المعرض.
-              </p>
-            </div>
-          </div>
-
-          <div class="actions">
-            <button class="btn br btn-prev" type="button" onclick="prevStep(3)"><i data-lucide="arrow-right" style="width:17px;height:17px"></i> السابق</button>
-            <button class="btn bp btn-next" type="button" onclick="nextStep(3)">التالي <i data-lucide="arrow-left" style="width:17px;height:17px"></i></button>
-          </div>
-        </div>
-
-        <!-- Step 4: Terms & Consent -->
-        <div class="step-content" id="step-4" style="display:none;">
-          <!-- 4. الشروط والأحكام العامة للمشاركة -->
-          <div class="slabel"><i data-lucide="shield-check" style="width:18px;height:18px"></i>4. الشروط والأحكام العامة للمشاركة:</div>
-          <div
-            style="background-color: #faf8f5; border: 1px solid #f0eae1; border-radius: 12px; padding: 20px; margin: 15px 0;">
-            <ul
-              style="list-style: decimal; padding-right: 20px; font-size: 13.5px; line-height: 1.8; color: #4a3e3d; margin: 0 0 15px 0;">
-              <li>يتعهد العارض بالحفاظ على نظافة وهندام الجناح المخصص له طيلة أيام التظاهرة (4 أيام).</li>
-              <li style="margin-top: 8px;">يُمنع منعاً باتاً عرض أي قطع مقلدة حديثاً على أنها قطع أثرية أصيلة (الالتزام
-                بالأمانة الفنية).</li>
-              <li style="margin-top: 8px;">الجمعية والمتحف الوطني يوفران الحراسة العامة للفضاء، لكن العارض مسؤول بشكل
-                مباشر عن حماية مقتنياته الثمينة داخل جناحه.</li>
-              <li style="margin-top: 8px;">الالتزام بالتواجد في الجناح طيلة أوقات الاستقبال الرسمية للمعرض واحترام تعليمات
-                اللجنة المنظمة للمعرض.</li>
-            </ul>
-          </div>
-
-          <!-- 5. حماية البيانات والخصوصية (قانون 18-07) -->
-          <div class="slabel"><i data-lucide="lock" style="width:18px;height:18px"></i>5. حماية البيانات والخصوصية (قانون 18-07):</div>
-          <div
-            style="background-color: #faf8f5; border: 1px solid #f0eae1; border-radius: 12px; padding: 20px; margin: 15px 0;">
-            <p style="font-size: 13.5px; line-height: 1.9; color: #4a3e3d; margin: 0 0 12px 0;">
-              تلتزم الجهة المنظمة للتظاهرة الثقافية بحماية سرية وأمن المعطيات ذات الطابع الشخصي المجمعة في هذه الاستمارة،
-              وذلك طبقاً لأحكام <strong>القانون رقم 18-07</strong> الجزائري.
-            </p>
-            <p style="font-size: 13.5px; line-height: 1.9; color: #4a3e3d; margin: 0 0 15px 0;">
-              إن المعلومات المطلوبة (كالاسم، الهاتف، والبريد الإلكتروني) تُجمع حصرياً لأغراض تنظيم التظاهرة، التواصل مع
-              المشاركين، وإعداد الإحصائيات الداخلية، ولن يتم مشاركتها مع أي أطراف ثالثة أو استخدامها لأغراض تجارية دون
-              موافقتكم الصريحة. كما يحق لكم في أي وقت طلب تعديل أو حذف بياناتكم عبر الاتصال بنا.
-            </p>
-            <div
-              style="display: flex; flex-direction: column; gap: 8px; padding-top: 15px; border-top: 1px solid #f0eae1;">
-              <label style="font-size: 14px; color: #241a0e; font-weight: bold; display: block; margin-bottom: 6px;">
-                اوافق على استمعال بياناتي الشخصية <span style="color: #8c3a1c;">*</span>
-              </label>
-              <div style="display: flex; gap: 20px;">
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                  <input type="radio" name="data_usage_consent" value="نعم" required
-                    style="width: 18px; height: 18px; accent-color: var(--green);" />
-                  نعم
-                </label>
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor: pointer;">
-                  <input type="radio" name="data_usage_consent" value="لا"
-                    style="width: 18px; height: 18px; accent-color: var(--green);" />
-                  لا
-                </label>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">حمودي باية</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>باتنة — التحف بصفة عامة</span>
               </div>
             </div>
           </div>
-
-          <div
-            style="display: flex; align-items: flex-start; gap: 10px; margin: 20px 0; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #e0d8c3;">
-            <input type="checkbox" id="termsAgreement" name="terms_agreement" required
-              style="width: 20px; height: 20px; margin-top: 3px; cursor: pointer; accent-color: var(--green);" />
-            <label for="termsAgreement"
-              style="font-size: 14px; color: #241a0e; font-weight: bold; cursor: pointer; user-select: none;">
-              أوافق على الشروط والأحكام المذكورة أعلاه وأتعهد بالالتزام بها. <span style="color: #8c3a1c;">*</span>
-            </label>
-          </div>
-
-          <div class="two"
-            style="margin: 20px 0; padding: 15px; background: #faf8f5; border-radius: 8px; border: 1px dashed #c9972a;">
-            <div style="font-size: 13px; color: #6b5b44;">
-              <strong>توقيع العارض:</strong> يتم التوقيع رقمياً بمجرد تفعيل خانة الموافقة وإرسال الاستمارة.
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">04</span>
             </div>
-            <div style="font-size: 13px; color: #6b5b44; text-align: left;" id="submissionDateContainer">
-              <strong>تاريخ الإرسال:</strong> <span id="currentDateDisplay">.. / .. / 2026</span>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بن عمر دويم</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>واد سوف — راديوهات ومسجلات، لوحات القياس القديمة</span>
+              </div>
             </div>
           </div>
-
-          <div class="notice"><i data-lucide="info" style="width:16px;height:16px"></i>ملاحظة: سيُطلب منكم إرسال صورة
-            بطاقة التعريف والصورة الشخصية عبر الواتساب فور إرسال هذه الاستمارة.</div>
-          <div class="actions">
-            <button class="btn br btn-prev" type="button" onclick="prevStep(4)"><i data-lucide="arrow-right" style="width:17px;height:17px"></i> السابق</button>
-            <button class="btn bp" type="submit"><i data-lucide="send" style="width:17px;height:17px"></i>إرسال الطلب</button>
-            <button class="btn br" type="button" onclick="resetForm()"><i data-lucide="trash-2" style="width:17px;height:17px"></i>إفراغ</button>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">05</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بلكيدار حسيبة</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>بجاية — بطاقات بريدية</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">06</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">علاوة صغيرى</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>قسنطينة — الأنتيكات</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">07</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">نابلسي أحمد</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>الأغواط — عملات ومقتنيات قديمة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">08</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">حاج زوبير صورية</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>عنابة — Roche et</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">09</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بوناموس خالد</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>عنّابة — البطاقات والطوابع</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">10</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بلعبيد حمزة</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>غليزان — الكتب القديمة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">11</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">عمار بوزيدي</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>الشلف — وثائق الأمير عبد القادر</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">12</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">شبال وهيبة</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>تيبازة — figurines، الطائرات</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">13</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بن اشنهو عمر</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>تلمسان — البطاقات القديمة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">14</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بن قانة منير</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>سيدي بلعباس — وثائق الثورة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">15</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">عامر علي</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>سعيدة — القلائد والبينز</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">16</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">جراري وداد</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>خنشلة — زرابي ومفروشات</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">17</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">شقرون عبد القادر</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>تلمسان</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">18</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">عبد الحكيم بوعبد الله</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>سطيف — التحف القديمة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">19</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">واري عبد الحق</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>سطيف — النحاسيات القديمة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">20</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">فاتح ليتيم</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>بيضاء برج — سطيف، النحاسيات القديمة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">21</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">معاش لحسن</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>عين ولمان — سطيف</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">22</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بوراس شعبان</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>بوسعادة — النحاسيات</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">23</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">لعور فارس</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>لوحات فنية</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">24</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">بومعزة توفيق</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>النحاسيات القديمة</span>
+              </div>
+            </div>
+          </div>
+          <div class="accepted-item" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(253,249,242,.7));border:1px solid var(--border);border-radius:18px;padding:12px 18px;transition:all .3s var(--ease);position:relative;overflow:hidden;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(201,151,42,.25);">
+              <span style="color:#fff;font-weight:800;font-size:14px;text-shadow:0 1px 2px rgba(0,0,0,.2);">25</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-weight:800;font-size:15px;color:var(--rust);line-height:1.4;">نسيم جلول</div>
+              <div style="font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;">
+                <i data-lucide="map-pin" style="width:11px;height:11px;flex-shrink:0;color:var(--gold);"></i>
+                <span>زرابي 1917</span>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
+      </div>
+
+      <div class="divider"></div>
+
+      <div style="margin:0 10px 18px;padding:18px 20px;background:linear-gradient(135deg,rgba(140,58,28,.06),rgba(201,151,42,.08));border:1.5px solid rgba(201,151,42,.3);border-radius:18px;border-right:4px solid var(--gold);animation:pulse-border 3s ease-in-out infinite;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <i data-lucide="alert-circle" style="width:22px;height:22px;color:var(--gold);flex-shrink:0;"></i>
+          <span style="font-family:'Amiri',serif;font-size:19px;font-weight:700;color:var(--rust);">تنبيه هام للمشاركين المقبولين</span>
+        </div>
+        <p style="font-size:14px;color:var(--muted);line-height:2;margin:0;">
+          نرجو من جميع المشاركين المقبولين في القائمة أعلاه <strong>إرسال صورة شخصية (هوية) وصورة من بطاقة التعريف البيومترية</strong> عبر <strong>الواتساب</strong> على الرقم أدناه، وذلك من أجل إتمام إجراءات المبيت والترتيبات الإدارية الخاصة بالتظاهرة.
+        </p>
+      </div>
+
+      <div style="text-align:center;padding:0 20px 20px;">
+        <div style="padding:14px 24px;background:linear-gradient(135deg,rgba(45,92,58,.08),rgba(45,92,58,.04));border:1px solid rgba(45,92,58,.2);border-radius:16px;display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;">
+          <span style="font-size:14px;color:var(--green);font-weight:700;display:flex;align-items:center;gap:8px;">
+            <i data-lucide="phone" style="width:16px;height:16px;"></i>
+            للاستفسار وإرسال الصور:
+          </span>
+          <a href="tel:+213558507778" style="color:var(--rust);text-decoration:none;font-weight:800;font-size:16px;">0558507778</a>
+          <a href="https://wa.me/213558507778" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-decoration:none;padding:8px 18px;border-radius:30px;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(37,211,102,.25);transition:transform .22s,box-shadow .22s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 20px rgba(37,211,102,.35)';" onmouseout="this.style.transform='';this.style.boxShadow='';">
+            <i data-lucide="message-circle-more" style="width:16px;height:16px;"></i>
+            واتساب
+          </a>
+        </div>
+      </div>
+
     </div>
 
     <aside class="panel ac">
@@ -1792,44 +1800,17 @@
           <div><b>الإقامة</b>سيتم التواصل مع الراغبين في المبيت لتأكيد الحجز وتنسيق تفاصيل الإقامة.</div>
         </li>
       </ul>
-      <div class="badge-g"><i data-lucide="check-circle-2" style="width:15px;height:15px"></i>التسجيل مجاني لجميع
-        الولايات</div>
+      <div class="badge-g" style="background:linear-gradient(135deg,rgba(140,58,28,.09),rgba(140,58,28,.06));color:var(--rust);border-color:rgba(140,58,28,.22);"><i data-lucide="lock" style="width:15px;height:15px"></i>تم غلق باب التسجيل</div>
       <div class="cbox">
         <div class="ctop"><i data-lucide="phone-call" style="width:17px;height:17px"></i>للتواصل والاستفسار</div>
         <a href="tel:+213558507778">0558507778</a>
         <small>فريق التنظيم — جمعية إبزيم للثقافة والمواطنة</small>
       </div>
-      <a class="btn bp"
-        style="width:100%;margin-top:12px;background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 10px 26px rgba(37,211,102,.25);text-decoration:none"
-        href="https://wa.me/213558507778?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B1%D8%B3%D8%A7%D9%84%20%D8%B5%D9%88%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A8%D8%B7%D8%A7%D9%82%D8%A9%20%D9%88%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D9%81%D9%8A%20%D9%81%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%B9%D8%AA%D9%8A%D9%82"
-        target="_blank" rel="noopener"><i data-lucide="message-circle-more" style="width:17px;height:17px"></i>إرسال
-        الصور عبر واتساب</a>
-      <div class="notice"><i data-lucide="alert-triangle" style="width:16px;height:16px"></i>تأكدوا من إدخال بيانات
-        صحيحة — ستقوم اللجنة بدراسة الطلبات والاتصال بالمشاركين المقبولين فقط لتأكيد مشاركتهم النهائية.</div>
+      <div class="notice" style="border-right-color:var(--green);"><i data-lucide="info" style="width:16px;height:16px"></i>تم غلق باب التسجيل نهائياً. القائمة النهائية للمشاركين معتمدة، وسيتم الاتصال بالمقبولين عبر الهاتف من قبل جمعية إبزيم.</div>
     </aside>
   </div>
 
-  <div class="moverlay" id="modal">
-    <div class="modal" style="max-width: 480px;">
-      <i data-lucide="check-circle-2" style="width:58px;height:58px;color:#2d5c3a;margin:0 auto 14px;display:block"></i>
-      <h3>تم إرسال طلبك بنجاح!</h3>
-      <p style="margin-bottom: 20px;">
-        شكراً لتسجيلك في أيام <strong>فنون العتيق</strong><br>(04 — 07 جويلية 2026 · سطيف).<br>
-        ستقوم اللجنة بدراسة طلبك، وسيتم الاتصال بالمشاركين المقبولين فقط لتأكيد حضورهم النهائي.<br><br>
-        <strong>الخطوة الأخيرة:</strong> يرجى فتح واتساب لإرسال صورة بطاقة التعريف وصور المعروضات لإتمام ملف طلبك.
-      </p>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <a class="btn bp"
-          style="background:linear-gradient(135deg,#25D366,#128C7E);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;"
-          href="https://wa.me/213558507778?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B1%D8%B3%D8%A7%D9%84%20%D8%B5%D9%88%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A8%D8%B7%D8%A7%D9%82%D8%A9%20%D9%88%D8%A7%D9%84%D8%B5%D9%88%D8%B1%20%D9%84%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%20%D9%81%D9%8A%20%D9%81%D9%86%D9%88%D9%86%20%D8%A7%D9%84%D8%B9%D8%AA%D9%8A%D9%82"
-          target="_blank" rel="noopener"><i data-lucide="message-circle-more" style="width:17px;height:17px"></i>افتح
-          واتساب لإرسال الصور</a>
-        <button class="btn br" onclick="closeModal()"
-          style="display:inline-flex;align-items:center;justify-content:center;gap:8px;"><i data-lucide="thumbs-up"
-            style="width:17px;height:17px"></i>حسناً، شكراً!</button>
-      </div>
-    </div>
-  </div>
+
 
   <footer>
     <div class="footer-decoration">
@@ -1855,301 +1836,7 @@
     }
     let timer = setInterval(() => goTo(idx + 1), 6500);
     dots.forEach((d, i) => d.addEventListener('click', () => { clearInterval(timer); goTo(i); timer = setInterval(() => goTo(idx + 1), 6500); }));
-    let currentStep = 1;
-
-    function showStep(stepNum) {
-      currentStep = stepNum;
-      
-      // Hide all steps
-      document.querySelectorAll('.step-content').forEach(el => {
-        el.style.display = 'none';
-        el.classList.remove('active');
-      });
-      
-      // Show targeted step
-      const activeStep = document.getElementById(`step-${stepNum}`);
-      if (activeStep) {
-        activeStep.style.display = 'block';
-        setTimeout(() => activeStep.classList.add('active'), 10);
-      }
-      
-      // Update stepper bubbles
-      for (let i = 1; i <= 4; i++) {
-        const bubble = document.getElementById(`step-bubble-${i}`);
-        if (bubble) {
-          if (i === stepNum) {
-            bubble.classList.add('active');
-            bubble.classList.remove('completed');
-          } else if (i < stepNum) {
-            bubble.classList.add('completed');
-            bubble.classList.remove('active');
-          } else {
-            bubble.classList.remove('active', 'completed');
-          }
-        }
-      }
-      
-      // Update progress bar
-      const progress = document.getElementById('stepper-progress');
-      if (progress) {
-        progress.style.width = ((stepNum - 1) / 3 * 100) + '%';
-      }
-    }
-
-    function nextStep(stepNum) {
-      if (validateStep(stepNum)) {
-        showStep(stepNum + 1);
-      }
-    }
-
-    function prevStep(stepNum) {
-      showStep(stepNum - 1);
-    }
-
-    function goToStep(stepNum) {
-      if (stepNum === currentStep) return;
-      if (stepNum < currentStep) {
-        showStep(stepNum);
-      } else {
-        // Validate intermediate steps
-        for (let s = currentStep; s < stepNum; s++) {
-          if (!validateStep(s)) {
-            return;
-          }
-        }
-        showStep(stepNum);
-      }
-    }
-
-    function validateStep(stepNum) {
-      const stepEl = document.getElementById(`step-${stepNum}`);
-      if (!stepEl) return true;
-      
-      stepEl.querySelectorAll('.err').forEach(el => el.classList.remove('err'));
-      stepEl.querySelectorAll('.field-err').forEach(el => el.classList.remove('field-err'));
-      
-      let isValid = true;
-      
-      // 1. Text, select, textarea
-      const inputs = stepEl.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"]), select[required], textarea[required]');
-      inputs.forEach(input => {
-        if (!input.value.trim()) {
-          input.classList.add('err');
-          isValid = false;
-        }
-      });
-      
-      // 2. Radios
-      const radios = stepEl.querySelectorAll('input[type="radio"][required]');
-      const checkedRadioNames = new Set();
-      radios.forEach(radio => {
-        if (!checkedRadioNames.has(radio.name)) {
-          const checked = stepEl.querySelector(`input[name="${radio.name}"]:checked`);
-          if (!checked) {
-            isValid = false;
-            const container = radio.closest('div[style*="background-color"]');
-            if (container) {
-              container.classList.add('field-err');
-            } else {
-              radio.classList.add('err');
-            }
-          }
-          checkedRadioNames.add(radio.name);
-        }
-      });
-
-      // 3. Checkboxes
-      const checkboxes = stepEl.querySelectorAll('input[type="checkbox"][required]');
-      checkboxes.forEach(cb => {
-        if (!cb.checked) {
-          isValid = false;
-          const wrapper = cb.closest('div');
-          if (wrapper) {
-            wrapper.classList.add('field-err');
-          } else {
-            cb.classList.add('err');
-          }
-        }
-      });
-
-      // 4. Step 2 specific checkbox validation: at least one category checkbox must be selected
-      if (stepNum === 2) {
-        const checkboxNames = ['category_furniture', 'category_kitchenware', 'category_jewelry', 'category_documents', 'category_art', 'category_devices', 'category_other'];
-        const form = document.getElementById('regForm');
-        const hasAtLeastOne = checkboxNames.some(name => form.querySelector(`[name="${name}"]`).checked);
-        if (!hasAtLeastOne) {
-          isValid = false;
-          const catBlock = stepEl.querySelector('input[name="category_furniture"]').closest('div[style*="background-color"]');
-          if (catBlock) {
-            catBlock.classList.add('field-err');
-          }
-          alert("يرجى اختيار تصنيف واحد على الأقل للتحف التي تنوي عرضها.");
-          return false;
-        }
-      }
-
-      if (!isValid) {
-        alert('يرجى ملء جميع الحقول المطلوبة ومراجعة الأخطاء المحددة باللون الأحمر.');
-      }
-      
-      return isValid;
-    }
-
-    function resetForm() {
-      const form = document.getElementById('regForm');
-      form.reset();
-      form.querySelectorAll('input:not([type="hidden"])').forEach(el => {
-        if (el.type === 'checkbox' || el.type === 'radio') {
-          el.checked = false;
-        } else {
-          el.value = '';
-        }
-      });
-      form.querySelectorAll('textarea').forEach(el => el.value = '');
-      form.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
-      document.querySelectorAll('.err').forEach(e => e.classList.remove('err'));
-      document.querySelectorAll('.field-err').forEach(el => el.classList.remove('field-err'));
-      showStep(1);
-    }
-
-    // Initialize stepper on page load
-    showStep(1);
-
-    function closeModal() {
-      document.getElementById('modal').classList.remove('active');
-    }
-
-    // Close modal when clicking outside the content box
-    document.getElementById('modal').addEventListener('click', function (e) {
-      if (e.target === this) {
-        closeModal();
-      }
-    });
-
-    document.getElementById('regForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const form = this;
-      
-      // Validate all steps sequentially
-      for (let s = 1; s <= 4; s++) {
-        if (!validateStep(s)) {
-          showStep(s);
-          return;
-        }
-      }
-
-      const fd = new FormData(form);
-
-      // Dynamic WhatsApp Link generation
-      const name = form.querySelector('[name="fullname"]').value;
-      const phone = form.querySelector('[name="phone"]').value;
-      const wilaya = form.querySelector('[name="wilaya"]').value;
-      const commune = form.querySelector('[name="commune"]').value;
-
-      // Categories checkboxes compilation
-      const categoriesList = [];
-      if (form.querySelector('[name="category_furniture"]').checked) categoriesList.push('أثاث وديكورات عتيقة');
-      if (form.querySelector('[name="category_kitchenware"]').checked) categoriesList.push('أواني ونحاسيات');
-      if (form.querySelector('[name="category_jewelry"]').checked) categoriesList.push('ساعات ومجوهرات');
-      if (form.querySelector('[name="category_documents"]').checked) categoriesList.push('وثائق ومخطوطات');
-      if (form.querySelector('[name="category_art"]').checked) categoriesList.push('لوحات فنية وصور');
-      if (form.querySelector('[name="category_devices"]').checked) categoriesList.push('أجهزة كلاسيكية');
-      if (form.querySelector('[name="category_other"]').checked) {
-        const otherVal = form.querySelector('[name="category_other_text"]').value;
-        categoriesList.push(otherVal ? `أخرى: ${otherVal}` : 'أخرى');
-      }
-      const selectedCategories = categoriesList.join(' · ');
-
-      // Space requirement
-      const spaceRequirementElement = form.querySelector('[name="space_requirement"]:checked');
-      let selectedSpace = spaceRequirementElement ? spaceRequirementElement.value : 'غير محدد';
-      if (selectedSpace === 'مساحة أرضية مخصصة للقطع الكبيرة والأثاث') {
-        const floorDims = form.querySelector('[name="floor_space_dims"]').value;
-        if (floorDims) selectedSpace += ` (أبعاد: ${floorDims})`;
-      }
-
-      const msg = `السلام عليكم، لقد قمت بالتسجيل في أيام فنون العتيق عبر الموقع.
-الاسم الكامل: ${name}
-رقم الهاتف: ${phone}
-الولاية: ${wilaya} (بلدية ${commune})
-التصنيف المعروض: ${selectedCategories}
-المساحة المطلوبة: ${selectedSpace}
-
-أرفق لكم هنا صورة بطاقة التعريف وصور المعروضات لمراجعة طلبي.`;
-
-      const encodedMsg = encodeURIComponent(msg);
-      const waUrl = `https://wa.me/213558507778?text=${encodedMsg}`;
-
-      // Set the WhatsApp button link inside the modal
-      const waBtn = document.querySelector('#modal a.btn.bp');
-      if (waBtn) {
-        waBtn.setAttribute('href', waUrl);
-      }
-
-      // Local file testing fallback
-      if (window.location.protocol === 'file:') {
-        form.reset();
-        resetForm();
-        updateDateDisplay();
-        document.getElementById('modal').classList.add('active');
-        return;
-      }
-
-      // Show loading state on submit button
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>جاري الإرسال...</span>';
-      }
-
-      try {
-        // Build URLSearchParams manually to ensure proper encoding for Netlify Forms
-        const params = new URLSearchParams();
-        params.append('form-name', 'contact');
-        for (const [key, value] of fd.entries()) {
-          if (!(value instanceof File)) {
-            params.append(key, value);
-          }
-        }
-
-        const res = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString()
-        });
-
-        if (res.ok) {
-          form.reset();
-          resetForm();
-          updateDateDisplay();
-          document.getElementById('modal').classList.add('active');
-        } else {
-          alert('فشل الإرسال. رمز الاستجابة: ' + res.status + '. تأكد من تفعيل الاستمارة في لوحة تحكم Netlify (Forms).');
-        }
-      } catch (err) {
-        alert('تعذر الإرسال. تحقق من الاتصال بالإنترنت. خطأ: ' + err.message);
-      } finally {
-        // Restore button state
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnContent;
-          lucide.createIcons();
-        }
-      }
-    });
-
-    function updateDateDisplay() {
-      const dateSpan = document.getElementById('currentDateDisplay');
-      if (dateSpan) {
-        const today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth() + 1).padStart(2, '0');
-        const yyyy = today.getFullYear();
-        dateSpan.textContent = `${dd} / ${mm} / ${yyyy}`;
-      }
-    }
-    updateDateDisplay();</script>
+  </script>
 </body>
 
 </html>
